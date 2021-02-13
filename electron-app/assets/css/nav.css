@@ -1,0 +1,318 @@
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+body {
+  padding-top: 70px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  /* background-color: #fafafa; */
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.toButton {
+  text-align: center;
+  border-radius: 2rem;
+  background: #6d7fcc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  color: #fff;
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s;
+}
+
+a.toButton:hover {
+  background-color: #6d7fcc;
+  color: #fff;
+  box-shadow: 0 3px 6px rgba(0, 110, 255, 0.4);
+}
+
+#landingPage nav {
+  position: fixed;
+  width: 100%;
+  opacity: 1;
+  /* top: 0; */
+  background-color: rgba(255, 255, 255);
+}
+
+#landingPage nav ul a {
+  font-size: 0.93em;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 10px 15px;
+  text-align: center;
+  color: #000;
+}
+
+#landingPage nav a:hover {
+  opacity: 0.9;
+  color: #007bff;
+}
+
+/* #loginPage{
+    background-color: #fafafa;
+} */
+
+.loginPage.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: 600;
+}
+
+/* input[type='text'], input[type='password'], textarea{
+  border: 1.5px solid black; 
+} */
+
+p {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1em;
+  font-weight: 300;
+  line-height: 1.7em;
+  color: #999;
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #ddd;
+  margin: 40px 0;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: 0.5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-size: 1.1em;
+  font-weight: 600;
+  padding: 12px 20px;
+  border-bottom: 1px solid #47748b;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar ul li.onHover a:hover {
+  color: #7386d5;
+  background: rgba(202, 205, 209, 0.3);
+}
+
+.sidebar ul li.onHover.active > a,
+a[aria-expanded="true"] {
+  color: #fff;
+  background: #6d7fcc;
+}
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+
+#content {
+  width: 100%;
+  padding: 20px;
+  /* min-height: 100vh; */
+  transition: all 0.3s;
+}
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -250px;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #sidebarCollapse span {
+    display: none;
+  }
+}
+/* ---------------------------------------------------
+    TABLESTYLING
+----------------------------------------------------- */
+td,
+th {
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.grid-mess {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  /* margin-top: 20px; */
+}
+
+.card-mess {
+  height: 350px;
+  border: 3px solid #f1f1f1;
+}
+
+.grid-accounts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  margin-top: 20px;
+}
+
+.oneGrid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card-body {
+  padding: 0.75rem;
+  padding-left: 1rem;
+}
+.create-btn {
+  margin-right: auto;
+}
+
+/* ---------------------------------------------------
+    FLIP-CARDS
+----------------------------------------------------- */
+
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 3px solid #f1f1f1;
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.flip-card-front h2 {
+  color: white;
+}
+
+.flip-card-back {
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card h2 {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #e3e3e3;
+}
+
+.flip-card-back div {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.flip-card-back p {
+  color: white;
+}
+
+.student-front h2,
+.student-back {
+  background-color: #db3069;
+}
+
+.messstaff-front h2,
+.messstaff-back {
+  background-color: #2eb872;
+}
+
+.cr-front h2,
+.cr-back {
+  background-color: #fd5f00;
+}
+
+.guard-front h2,
+.guard-back {
+  background-color: #f4b400;
+}
+
+.app-front h3 {
+  background-color: #f4b400;
+}

@@ -6,25 +6,25 @@ var python;
 
 function createWindow () {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1500,
+    height: 900,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
-  win.loadFile('index.html');
+  win.loadFile('./pages/login.html');
 
-  python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
-  python.stdout.on('data',function(data){
-    console.log("data: ",data.toString('utf8'));
-  });
+//   python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
+//   python.stdout.on('data',function(data){
+//     console.log("data: ",data.toString('utf8'));
+//   });
 }
 
 app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
-  python.kill('SIGINT');
+//   python.kill('SIGINT');
   if (process.platform !== 'darwin') {
     app.quit()
   }
