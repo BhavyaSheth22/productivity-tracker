@@ -1,0 +1,125 @@
+{
+    "activities": [
+        {
+            "name": "Electron", 
+            "time_entries": [
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:24", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 1, 
+                    "start_time": "2021-02-13 19:05:23"
+                }
+            ]
+        }, 
+        {
+            "name": "Hello World!", 
+            "time_entries": [
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:25", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 1, 
+                    "start_time": "2021-02-13 19:05:24"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:33", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 5, 
+                    "start_time": "2021-02-13 19:05:28"
+                }
+            ]
+        }, 
+        {
+            "name": "Google Chrome -> Airmeet: S.P.I.T. Hackathon 2021", 
+            "time_entries": [
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:28", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 2, 
+                    "start_time": "2021-02-13 19:05:25"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:44", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 5, 
+                    "start_time": "2021-02-13 19:05:39"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:56", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 4, 
+                    "start_time": "2021-02-13 19:05:52"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:06:23", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 20, 
+                    "start_time": "2021-02-13 19:06:02"
+                }
+            ]
+        }, 
+        {
+            "name": "Visual Studio Code", 
+            "time_entries": [
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:36", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 3, 
+                    "start_time": "2021-02-13 19:05:33"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:52", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 8, 
+                    "start_time": "2021-02-13 19:05:44"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:06:02", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 6, 
+                    "start_time": "2021-02-13 19:05:56"
+                }, 
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:06:28", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 5, 
+                    "start_time": "2021-02-13 19:06:23"
+                }
+            ]
+        }, 
+        {
+            "name": "Google Chrome -> Using Selenium and WebDriver | Electron", 
+            "time_entries": [
+                {
+                    "days": 0, 
+                    "end_time": "2021-02-13 19:05:39", 
+                    "hours": 0, 
+                    "minutes": 0, 
+                    "seconds": 3, 
+                    "start_time": "2021-02-13 19:05:36"
+                }
+            ]
+        }
+    ]
+}
