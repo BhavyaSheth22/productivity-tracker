@@ -12,5 +12,8 @@
   "description": "",
   "devDependencies": {
     "electron": "^11.2.3"
+  },
+  "dependencies": {
+    "python-shell": "^2.0.3"
   }
 }
