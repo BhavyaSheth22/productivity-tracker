@@ -2,3 +2,4 @@ node_modules
 tracker_script/env
 tracker_script/activity.pyc
 tracker_script/linux.pyc
+tracker_script/activities.json
