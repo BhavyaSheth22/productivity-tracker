@@ -15,16 +15,16 @@ function createWindow () {
 
   win.loadFile('./pages/login.html');
 
-//   python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
-//   python.stdout.on('data',function(data){
-//     console.log("data: ",data.toString('utf8'));
-//   });
+  // python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
+  // python.stdout.on('data',function(data){
+  //   console.log("data: ",data.toString('utf8'));
+  // });
 }
 
 app.whenReady().then(createWindow)
 
 app.on('window-all-closed', () => {
-//   python.kill('SIGINT');
+  // python.kill('SIGINT');
   if (process.platform !== 'darwin') {
     app.quit()
   }
