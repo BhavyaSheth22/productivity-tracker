@@ -9,6 +9,8 @@ from flask_jwt_extended import (
     get_jwt_identity, set_access_cookies,
     set_refresh_cookies, unset_jwt_cookies
 )
+from geopy.geocoders import Nominatim
+import datetime
 
 app = Flask(__name__)
 
@@ -42,7 +44,7 @@ def not_found(error=None):
 def signup():
     data = request.json
     username = data['username']
-    address = data['username']
+    address = data['address']
     # lat = 
     # long = 
     contact_no = data['contact']
@@ -55,12 +57,14 @@ def signup():
     else:
         user_type = 0
 
+    geolocator = Nominatim(user_agent='Timely')
+    location = geolocator.geocode(address) 
     id = db.user.insert({
         'username':username,
         'password': password,
         'address': address,
-        # 'lat': lat,
-        # 'long': long,
+        'lat': location.latitude,
+        'long': location.longitude,
         'contact_no':contact_no,
         'type': user_type})
 
@@ -85,6 +89,7 @@ def login():
         
         response = jsonify({
             'message': "User successfully logged in!",
+            'user_type': user['type'],
             'access token': access_token
             })
         response.status_code = 200
@@ -95,12 +100,6 @@ def login():
         return response
     else:
         return not_found()
-
-@app.route('/api/example', methods=['GET'])
-@jwt_required
-def protected():
-    username = get_jwt_identity()
-    return jsonify({'hello': 'from {}'.format(username)}), 200
 
 # Logout
 @app.route('/token/remove', methods=['POST'])
@@ -133,6 +132,34 @@ def store_user_data():
     id = db.user.insert(data)
 
     response = jsonify("User's data added successfully!")
+    response.status_code = 200
+
+    return response
+
+
+@app.route('/get_user_activity_data/<id>')
+@jwt_required
+def get_user_activity_data(id):
+    activities = db.user_activities.find({'user_id':ObjectId(id)})
+    response = dumps(activities)
+    return response
+
+
+@app.route('/store_user_activity_data/<id>', methods=['POST'])
+@jwt_required
+def store_user_activity_data(id):
+    data = request.json
+
+    date = datetime.datetime.now().strftime("%x")
+    time = datetime.datetime.now().strftime("%X")
+    id = db.user_activities.insert({
+        'user_id':ObjectId(id),
+        'date': date,
+        'time': time,
+        'activities': data['activities'],
+        })
+
+    response = jsonify("User's activity data added successfully!")
     response.status_code = 200
 
     return response
