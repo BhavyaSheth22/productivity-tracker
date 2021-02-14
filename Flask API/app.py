@@ -15,6 +15,9 @@ from flask_jwt_extended import (
 )
 from geopy.geocoders import Nominatim
 import datetime
+import geocoder
+import sys
+from math import radians, cos, sin, asin, sqrt
 
 app = Flask(__name__)
 
@@ -39,7 +42,7 @@ def Ananlyzer(response):
     #     data = json.load(f)
     #     data = data["activities"]
 
-    data = response["activities"]
+    data = response
 
     nltk.download('stopwords')
     nltk.download('punkt')
@@ -138,7 +141,8 @@ def Ananlyzer(response):
 
             df.loc[i, "Productivity"] = "Productive"
 
-    Final_json = df.to_json("test.json", orient='records')
+    Final_json = df.to_json(orient='records')
+    print(Final_json)
 
     return Final_json
 
@@ -162,9 +166,9 @@ def signup():
     data = request.json
     username = data['username']
     address = data['address']
-    # lat =
-    # long =
-    contact_no = data['contact']
+    # lat = 
+    # long = 
+    contact_no = data['contact_no']
     pwd = data['password']
     password = generate_password_hash(pwd)
 
@@ -295,18 +299,62 @@ def store_user_activity_data(id):
 @app.route('/get_user_attendance_data/<id>')
 # @jwt_required
 def get_user_attendance_data(id):
+
     attendance = db.user_attendance.find({'user_id': ObjectId(id)})
     response = dumps(attendance)
     return response
 
+def haversine(lon1, lat1, lon2, lat2):
+    """
+    Calculate the great circle distance between two points 
+    on the earth (specified in decimal degrees)
+    """
+    # convert decimal degrees to radians 
+    lon1, lat1, lon2, lat2 = map(radians, [lon1, lat1, lon2, lat2])
 
-@app.route('/store_user_attendance_data/<attendance>/<id>', methods=['POST'])
+    # haversine formula 
+    dlon = lon2 - lon1 
+    dlat = lat2 - lat1 
+    a = sin(dlat/2)**2 + cos(lat1) * cos(lat2) * sin(dlon/2)**2
+    c = 2 * asin(sqrt(a)) 
+    r = 6371 # Radius of earth in kilometers. Use 3956 for miles
+    return c * r
+
+
+@app.route('/store_user_attendance_data/<id>', methods=['POST'])
 # @jwt_required
-def store_user_attendance_data(id, attendance):
+def store_user_attendance_data(id):
     data = request.json
 
     date = datetime.datetime.now().strftime("%x")
     time = datetime.datetime.now().strftime("%X")
+
+    g = geocoder.ip('me')
+    print(g.latlng)
+    print(type(g.latlng))
+    lat = g.latlng[0]
+    longi = g.latlng[1]
+
+    user = db.user.find_one({"_id":ObjectId(id)})
+
+    center_point = [{'lat': user['lat'], 'lng': user['long']}]
+    test_point = [{'lat': lat, 'lng': longi}]
+
+    lat1 = center_point[0]['lat']
+    lon1 = center_point[0]['lng']
+    lat2 = test_point[0]['lat']
+    lon2 = test_point[0]['lng']
+
+    radius = 1.00 # in kilometer
+
+    a = haversine(lon1, lat1, lon2, lat2)
+
+    print('Distance (km) : ', a)
+    if a <= radius:
+        attendance = 1
+    else:
+        attendance = 0
+
     id = db.user_attendance.insert({
         'user_id': ObjectId(id),
         'date': date,
