@@ -1,0 +1,56 @@
+[
+  {
+    "": 0,
+    "Name": "New Tab - Brave",
+    "Time": 0.18333333333333332,
+    "Productivity": "Cant predict"
+  },
+  {
+    "": 1,
+    "Name": "Facebook messenger (3)",
+    "Time": 0.18333333333333332,
+    "Productivity": "Non - Productive"
+  },
+  {
+    "": 2,
+    "Name": "easy_install-2.7 - AutoTimer - Visual Studio Code",
+    "Time": 0.2,
+    "Productivity": "Productive"
+  },
+  {
+    "": 3,
+    "Name": "activities.json - AutoTimer - Visual Studio Code",
+    "Time": 3.4166666666666665,
+    "Productivity": "Productive"
+  },
+  {
+    "": 4,
+    "Name": "One Day Builds: Automatic time tracking using Python - YouTube - Brave",
+    "Time": 0.31666666666666665,
+    "Productivity": "Cant predict"
+  },
+  {
+    "": 5,
+    "Name": "#extension - Discord",
+    "Time": 2.45,
+    "Productivity": "Cant predict"
+  },
+  {
+    "": 6,
+    "Name": "Program Manager",
+    "Time": 0.05,
+    "Productivity": "Cant predict"
+  },
+  {
+    "": 7,
+    "Name": "Cortana",
+    "Time": 0.48333333333333334,
+    "Productivity": "Cant predict"
+  },
+  {
+    "": 8,
+    "Name": "XAMPP Control Panel v3.2.4   [ Compiled: Jun 5th 2019 ]",
+    "Time": 0.23333333333333334,
+    "Productivity": "Cant predict"
+  }
+]

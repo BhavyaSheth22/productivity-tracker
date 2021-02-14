@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timely</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./../assets/css/nav.css">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+        crossorigin="anonymous"></script>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+        var prod = 0, unprod = 0, cantprod = 0;
+
+        var json_data;
+
+        $(function () {
+
+
+            var people = [];
+
+            $.getJSON('../../assets/test.json', function (data) {
+                console.log(data)
+                json_data = data
+                $.each(data, function (i, f) {
+
+                    if (f.Productivity == 'Productive') {
+                        prod++;
+                    }
+                    else if (f.Productivity == 'Non - Productive') {
+                        unprod++;
+                    }
+                    else if(f.Productivity == 'Cant predict'){
+                        cantprod++;
+                    }
+                    var tblRow = "<tr>" + "<td>" + f.Name + "</td>" +
+                        "<td>" + f.Time.toPrecision(2) + "</td>" + "<td>" + f.Productivity + "</td>" + "</tr>"
+                    $(tblRow).appendTo("#userdata tbody");
+                });
+
+            });
+
+        });
+
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+        google.charts.setOnLoadCallback(DrawChart_1);
+
+            // Draw the chart and set the chart values
+        function drawChart() {
+                var data = google.visualization.arrayToDataTable([
+                    ['Productive', 'Minutes per Day'],
+                    ['Productive', prod],
+                    ['Non - Productive', unprod],
+                    ['Cant predict', cantprod]
+                ]);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = { 'title': 'Daily productivity', 'width': 550, 'height': 400 };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+                chart.draw(data, options);
+            }
+        function DrawChart_1() {
+
+                data1 = [["Activity Name", "Time"]];
+
+                console.log(data1)
+
+                json_data.forEach(d => {
+                    data1.push([d.Name, d.Time]);
+                });
+
+                var data2 = google.visualization.arrayToDataTable(data1);
+
+                // Optional; add a title and set the width and height of the chart
+                var options = { 'title': 'Time tracker', 'width': 550, 'height': 400 };
+
+                // Display the chart inside the <div> element with id="piechart"
+                var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+
+                chart.draw(data2, options);
+            }
+    </script>
+    <script type="text/javascript">
+        $(function attendance() {
+
+            var v = 1;
+
+            if (v == 1) {
+                var element = document.getElementById("present");
+                
+                temp = document.createElement('button');
+
+                temp.innerHTML = "present";
+
+                temp.className = "btn btn-success";
+
+                element.appendChild(temp)
+            }
+            else {
+
+                var element = document.getElementById("present");
+
+                temp = document.createElement('button');
+
+                temp.innerHTML = "absent";
+
+                temp.className = "btn btn-danger";
+
+                element.appendChild(temp)
+                
+            }
+
+            console.log(para);
+        });
+    </script>
+
+    <style>
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+
+        .form-signin .form-control {
+            position: relative;
+            box-sizing: border-box;
+            height: auto;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .form-signin .form-control:focus {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+        .flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
+}
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+}
+
+.flex-child-extra {
+    flex: 1;
+}
+    </style>
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="flex-container">
+            <div class="flip-card flex-child">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="../../assets/images/mark.jpg" alt="Avatar" style="width:300px;height:300px;">
+                    </div>
+                    <div class="flip-card-back">
+                        <h4><b>John Doe</b></h4>
+                        <p>Architect & Engineer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="flex-child-extra"></div>
+            <div class="card flex-child">
+                <p>Date : 14/02/2021</p>
+                <p>Latitude : 34.2727</p>
+                <p>Longitude : 54.2724</p>
+                <p id="present">
+                </p>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">
+            <div id="piechart"></div>
+            <div id="piechart1"></div>
+        </div>
+        <table id="userdata" class="table table-striped">
+            <thead>
+                <th>Name</th>
+                <th>Time</th>
+                <th>Productivity</th>
+            </thead>
+            <tbody>
+        
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <div class="card-deck grid">
+        <div class="card">
+            <div class="card-header">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">Hrim Gandhi</a>
+                    <small class="text-muted">14/02/2021</small>
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">{{ announcement.title }}</h3>
+                <p style="color: black;">{{announcement.content}}</p>
+    
+                {% if current_user==announcement.author %}
+    
+                <div class="row">
+                    <div class="col-md-2 offset-9">
+                        <a href="{{ url_for('update_announcement', announcement_id=announcement.id) }}"
+                            class="btn btn-warning">
+                            <i class="fas fa-edit text-white"></i>
+                        </a>
+                    </div>
+                    <div class="col-md-2" style="margin-left: -30px; margin-right: -30px;">
+                        <form action="{{ url_for('delete_announcement', announcement_id=announcement.id) }}" method="POST">
+                            <button class="btn btn-danger" type="submit"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </div>
+                </div>
+    
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    </div> -->
+   
+</body>
+
+
+</html>
