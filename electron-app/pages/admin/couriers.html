@@ -1,0 +1,67 @@
+{% extends 'student/students_layout.html' %}
+{% block student_couriers %}active{% endblock student_couriers %}
+{% block student_content %}
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            {% if pending_couriers %}
+            <h4 style="text-align: center; font-weight: bold;">Pending Couriers</h4>
+            <table class=" table table-hover">
+                <thead class='thead-light'>
+                    <tr>
+                        <th>From</th>
+                        <th>Arrival date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for courier in pending_couriers %}
+                    <tr>
+                        <td>{{courier.from_name}}</td>
+                        <td>{{courier.date_arrived.strftime('%d-%m-%Y %H:%M:%S') }}</td>
+                        <td>Pending</td>
+                    </tr> 
+                {% endfor %}
+                </tbody>
+                
+            </table>
+                
+            {% else %}
+                <h3>No Entries Yet</h3>
+            {% endif %}
+        </div>
+
+        <div class="col-md-6">
+            {% if collected_couriers %}
+            <h4 style="text-align: center; font-weight: bold;">Collected Couriers</h4>
+            <table class=" table table-hover">
+                <thead class='thead-light'>
+                    <tr>
+                        <th>From</th>
+                        <th>Arrival date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for courier in collected_couriers %}
+                    <tr>
+                        <td>{{courier.from_name}}</td>
+                        <td>{{courier.date_arrived.strftime('%d-%m-%Y %H:%M:%S') }}</td>
+                        <td>Collected</td>
+                    </tr> 
+                {% endfor %}
+                </tbody>
+                
+            </table>
+                
+            {% else %}
+                <h3>No Entries Yet</h3>
+            {% endif %}
+        </div>
+    </div>    
+</div>
+    
+<br>
+
+{% endblock %}

@@ -12,8 +12,9 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-
-  win.loadFile('./pages/login.html');
+  win.webContents.openDevTools()
+  //win.loadFile('./pages/login.html');
+  win.loadFile('./pages/admin/user_report.html');
 
 //   python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
 //   python.stdout.on('data',function(data){
