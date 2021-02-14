@@ -24,10 +24,10 @@ app.on('ready', function () {
   //win.loadFile('./pages/login.html');
   win.loadFile('./pages/login.html');
 
-  // python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
-  // python.stdout.on('data',function(data){
-  //   console.log("data: ",data.toString('utf8'));
-  // });
+  python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
+  python.stdout.on('data',function(data){
+    console.log("data: ",data.toString('utf8'));
+  });
 });
 
 
@@ -74,7 +74,7 @@ ipcMain.on('getAllUsers', async (event, data) => {
 })
 
 app.on('window-all-closed', () => {
-  // python.kill('SIGINT');
+  python.kill('SIGINT');
   if (process.platform !== 'darwin') {
     app.quit()
   }

@@ -22,8 +22,10 @@ ipcRenderer.on('userData', function(event, args) {
                 </div>
                 <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px
                         src="../../assets/images/mark.jpg" alt="food"></div>
-                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">       
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;"> 
+                <a href="user_report.html">       
                 <button type="submit" class="btn btn-primary" onclick="openUser(${element._id.$oid})">View report</button>
+                </a>
                 </div>
             </div>
             </div>
@@ -32,3 +34,9 @@ ipcRenderer.on('userData', function(event, args) {
     });
     div.innerHTML = html_str;
 });
+
+function openUser(id) {
+    console.log(id);
+}
+
+
