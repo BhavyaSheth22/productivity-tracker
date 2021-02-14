@@ -46,7 +46,7 @@ app.on('ready', function () {
   })
   win.webContents.openDevTools()
   //win.loadFile('./pages/login.html');
-  win.loadFile('./pages/admin/user_report.html');
+  win.loadFile('./pages/user_activity.html');
 
   // python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
   // python.stdout.on('data',function(data){
@@ -68,6 +68,21 @@ ipcMain.on('submitForm', (event, data) => {
   //       event.sender.send('formSubmissionResults', response.data);
   //       console.log('sent data');
   //   });
+})
+
+ipcMain.on('submitActivity', (event, data) => {
+  console.log(data);
+  // event.sender.send('formSubmissionResults', data);
+  win.webContents.send('activitySubmission', data);
+  axios.post('http://127.0.0.1:8080/store_user_activity_data/60284bd0ff980b07c84cfc2c',{
+              'activities': data['activities'] 
+            },{
+            headers:{
+                'Content-Type': 'application/json'
+            }
+        }).then(response => {
+            console.log(response)
+      })
 })
 
 app.on('window-all-closed', () => {

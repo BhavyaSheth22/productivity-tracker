@@ -166,16 +166,16 @@ def store_user_activity_data(id):
 
 
 @app.route('/get_user_attendance_data/<id>')
-@jwt_required
-def get_user_activity_data(id):
+# @jwt_required
+def get_user_attendance_data(id):
     attendance = db.user_attendance.find({'user_id':ObjectId(id)})
     response = dumps(attendance)
     return response
 
 
-@app.route('/store_user_activity_data/<attendance>/<id>', methods=['POST'])
-@jwt_required
-def store_user_activity_data(id, attendance):
+@app.route('/store_user_attendance_data/<attendance>/<id>', methods=['POST'])
+# @jwt_required
+def store_user_attendance_data(id, attendance):
     data = request.json
 
     date = datetime.datetime.now().strftime("%x")

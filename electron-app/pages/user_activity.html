@@ -30,8 +30,19 @@
 
             else if(document.getElementById("1").value=="STOP"){
                 $.getJSON('./../tracker_script/activities.json', function(data) {
+                    ipcRenderer.send('activitySubmission', data);
                     console.log(data);
                 });
+
+                const fs = require('fs')
+                const path = './../tracker_script/activities.json'
+                try {
+                    fs.unlinkSync(path)
+                    //file removed
+                } catch(err) {
+                    console.error(err)
+                }
+                
                 console.log('python killed')
                 document.getElementById("1").value="START";
                 document.getElementById("1").innerHTML = "Start recording";
