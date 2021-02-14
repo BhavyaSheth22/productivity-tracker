@@ -1,7 +1,7 @@
 // const settings = require('electron-settings');
 // const axios = require('axios');
-let ipcRenderer = require('electron').ipcRenderer;
-ipcRenderer.send('submitForm', formData);
+let ipcRenderer = require('electron').ipcRenderer; 
+// ipcRenderer.send('submitForm', formData);
 
 const responseParagraph = document.getElementById('test')
 
@@ -19,7 +19,7 @@ function getFormData(e){
     ipcRenderer.send('submitForm', formData);
 
     ipcRenderer.on('formSubmissionResults', function(event, args) {
-        responseParagraph.innerHTML = args['username'];
+        responseParagraph.innerHTML = args['message'];
         console.log(args);
      });
 
