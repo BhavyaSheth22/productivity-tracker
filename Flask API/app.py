@@ -86,11 +86,13 @@ def login():
         # Create the tokens we will be sending back to the user
         access_token = create_access_token(identity=username)
         refresh_token = create_refresh_token(identity=username)
-        
+        str_id = str(user['_id'])
+
         response = jsonify({
             'message': "User successfully logged in!",
-            # 'user_type': user["type"],
-            'access token': access_token
+            'user_type': user["type"],
+            'access token': access_token,
+            'id': str_id
             })
         response.status_code = 200
         
