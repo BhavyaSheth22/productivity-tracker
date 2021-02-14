@@ -80,16 +80,16 @@ def login():
     username = data['username']
     pwd = data['password']
 
-    user = db.user.find_one({'name': username})
-    # if check_password_hash(user['password'], pwd):
-    if user['password'] == pwd:
+    user = db.user.find_one({'username': username})
+    if check_password_hash(user['password'], pwd):
+    # if user['password'] == pwd:
         # Create the tokens we will be sending back to the user
         access_token = create_access_token(identity=username)
         refresh_token = create_refresh_token(identity=username)
         
         response = jsonify({
             'message': "User successfully logged in!",
-            'user_type': user['type'],
+            # 'user_type': user["type"],
             'access token': access_token
             })
         response.status_code = 200
@@ -160,6 +160,34 @@ def store_user_activity_data(id):
         })
 
     response = jsonify("User's activity data added successfully!")
+    response.status_code = 200
+
+    return response
+
+
+@app.route('/get_user_attendance_data/<id>')
+@jwt_required
+def get_user_activity_data(id):
+    attendance = db.user_attendance.find({'user_id':ObjectId(id)})
+    response = dumps(attendance)
+    return response
+
+
+@app.route('/store_user_activity_data/<attendance>/<id>', methods=['POST'])
+@jwt_required
+def store_user_activity_data(id, attendance):
+    data = request.json
+
+    date = datetime.datetime.now().strftime("%x")
+    time = datetime.datetime.now().strftime("%X")
+    id = db.user_attendance.insert({
+        'user_id':ObjectId(id),
+        'date': date,
+        'time': time,
+        'attendance': attendance,
+        })
+
+    response = jsonify("User's attendance has been marked successfully!")
     response.status_code = 200
 
     return response
