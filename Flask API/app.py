@@ -4,11 +4,12 @@ from bson.json_util import dumps
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    jwt_refresh_token_required, create_refresh_token,
+    JWTManager, jwt_required, create_access_token, create_refresh_token,
     get_jwt_identity, set_access_cookies,
     set_refresh_cookies, unset_jwt_cookies
 )
+from geopy.geocoders import Nominatim
+import datetime
 
 app = Flask(__name__)
 
@@ -42,7 +43,7 @@ def not_found(error=None):
 def signup():
     data = request.json
     username = data['username']
-    address = data['username']
+    address = data['address']
     # lat = 
     # long = 
     contact_no = data['contact']
@@ -55,12 +56,14 @@ def signup():
     else:
         user_type = 0
 
+    geolocator = Nominatim(user_agent='Timely')
+    location = geolocator.geocode(address) 
     id = db.user.insert({
         'username':username,
         'password': password,
         'address': address,
-        # 'lat': lat,
-        # 'long': long,
+        'lat': location.latitude,
+        'long': location.longitude,
         'contact_no':contact_no,
         'type': user_type})
 
@@ -73,18 +76,20 @@ def signup():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
+    print(data)
     username = data['username']
     pwd = data['password']
 
-    user = db.user.find_one({'name': username})
-    # if check_password_hash(user['password'], pwd):
-    if user['password'] == pwd:
+    user = db.user.find_one({'username': username})
+    if check_password_hash(user['password'], pwd):
+    # if user['password'] == pwd:
         # Create the tokens we will be sending back to the user
         access_token = create_access_token(identity=username)
         refresh_token = create_refresh_token(identity=username)
         
         response = jsonify({
             'message': "User successfully logged in!",
+            'user_type': user['type'],
             'access token': access_token
             })
         response.status_code = 200
@@ -96,12 +101,6 @@ def login():
     else:
         return not_found()
 
-@app.route('/api/example', methods=['GET'])
-@jwt_required
-def protected():
-    username = get_jwt_identity()
-    return jsonify({'hello': 'from {}'.format(username)}), 200
-
 # Logout
 @app.route('/token/remove', methods=['POST'])
 @jwt_required
@@ -111,15 +110,15 @@ def logout():
     return resp, 200
 
 @app.route('/get_all_users_data', methods = ['GET'])
-@jwt_required
+# @jwt_required
 def get_all_users_data():
     users = db.user.find()
     # print(users)
-    response = dumps(users)
+    response = dumps(users) 
     return response
 
 @app.route('/get_user_data/<id>')
-@jwt_required
+# @jwt_required
 def get_user_data(id):
     user = db.user.find_one({'_id':ObjectId(id)})
     response = dumps(user)
@@ -127,12 +126,40 @@ def get_user_data(id):
 
 
 @app.route('/store_user_data', methods=['POST'])
-@jwt_required
+# @jwt_required
 def store_user_data():
     data = request.json
     id = db.user.insert(data)
 
     response = jsonify("User's data added successfully!")
+    response.status_code = 200
+
+    return response
+
+
+@app.route('/get_user_activity_data/<id>')
+# @jwt_required
+def get_user_activity_data(id):
+    activities = db.user_activities.find({'user_id':ObjectId(id)})
+    response = dumps(activities)
+    return response
+
+
+@app.route('/store_user_activity_data/<id>', methods=['POST'])
+# @jwt_required
+def store_user_activity_data(id):
+    data = request.json
+
+    date = datetime.datetime.now().strftime("%x")
+    time = datetime.datetime.now().strftime("%X")
+    id = db.user_activities.insert({
+        'user_id':ObjectId(id),
+        'date': date,
+        'time': time,
+        'activities': data['activities'],
+        })
+
+    response = jsonify("User's activity data added successfully!")
     response.status_code = 200
 
     return response
