@@ -166,9 +166,15 @@ def signup():
     data = request.json
     username = data['username']
     address = data['address']
+<<<<<<< HEAD
+    # lat = 
+    # long = 
+    contact_no = data['contact_no']
+=======
     # lat =
     # long =
     contact_no = data['contact']
+>>>>>>> c86cdce0548e6417409316ffd01da8c61d3be0d6
     pwd = data['password']
     password = generate_password_hash(pwd)
 
