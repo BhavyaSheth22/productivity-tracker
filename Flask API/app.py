@@ -42,7 +42,7 @@ def Ananlyzer(response):
     #     data = json.load(f)
     #     data = data["activities"]
 
-    data = response
+    data = response['activities']
 
     nltk.download('stopwords')
     nltk.download('punkt')
