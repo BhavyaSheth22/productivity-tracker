@@ -1,0 +1,108 @@
+Accelerometer
+ADSL
+Android
+Archive
+ATX
+Backup
+Bandwidth
+Benchmark
+Barcode
+Booting or Boot loader
+BIOS
+Bitmap
+Bitcoin
+BitTorrent
+Blacklist
+Bluetooth
+Binary
+Backlink
+Bloatware
+Burn
+Cache
+Code
+Compression
+Content
+CMOS
+Cookie
+Cyber crime
+Cybersecurity
+Daemon
+Debug
+Dock
+Dos
+Device driver
+DPI
+DRM
+Encryption
+Electron
+Emulator
+Ethernet
+End user
+FAT32
+Framework
+Freeware
+Firewall
+FTP
+GIF
+GIT
+GPS
+GUI
+HTML
+HTTPS
+I/O
+IEEE
+ISO
+IMEI
+ISP
+Internet
+JAVA
+JavaScript
+JPEG
+Kernel
+Macintosh
+Mp3
+Malware
+MMS
+MIDI
+Machine
+OEM
+OS
+OCR
+Overclock
+Overheat
+PDF
+Phishing
+Python
+Plug-in
+QWERTY
+Remote access
+Registry
+Read-only
+RAID
+Rooting
+Safe mode
+SSID
+SEO
+Service pack
+Server
+Source code
+Spam
+Search engine
+Swype
+Trash
+Underclock
+Unix
+Virus
+Visual studio code
+VGA
+WEB
+Wi-Fi
+Hotspot
+Wikipedia Zero
+Windows
+Wireless LAN
+World Wide Web
+WYSIWYG
+WPA
+Wumpus
+Zip
