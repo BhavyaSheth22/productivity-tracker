@@ -4,8 +4,7 @@ from bson.json_util import dumps
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_jwt_extended import (
-    JWTManager, jwt_required, create_access_token,
-    jwt_refresh_token_required, create_refresh_token,
+    JWTManager, jwt_required, create_access_token, create_refresh_token,
     get_jwt_identity, set_access_cookies,
     set_refresh_cookies, unset_jwt_cookies
 )
@@ -77,12 +76,13 @@ def signup():
 @app.route('/login', methods=['POST'])
 def login():
     data = request.json
+    print(data)
     username = data['username']
     pwd = data['password']
 
-    user = db.user.find_one({'name': username})
-    # if check_password_hash(user['password'], pwd):
-    if user['password'] == pwd:
+    user = db.user.find_one({'username': username})
+    if check_password_hash(user['password'], pwd):
+    # if user['password'] == pwd:
         # Create the tokens we will be sending back to the user
         access_token = create_access_token(identity=username)
         refresh_token = create_refresh_token(identity=username)
@@ -110,15 +110,15 @@ def logout():
     return resp, 200
 
 @app.route('/get_all_users_data', methods = ['GET'])
-@jwt_required
+# @jwt_required
 def get_all_users_data():
     users = db.user.find()
     # print(users)
-    response = dumps(users)
+    response = dumps(users) 
     return response
 
 @app.route('/get_user_data/<id>')
-@jwt_required
+# @jwt_required
 def get_user_data(id):
     user = db.user.find_one({'_id':ObjectId(id)})
     response = dumps(user)
@@ -126,7 +126,7 @@ def get_user_data(id):
 
 
 @app.route('/store_user_data', methods=['POST'])
-@jwt_required
+# @jwt_required
 def store_user_data():
     data = request.json
     id = db.user.insert(data)
@@ -138,7 +138,7 @@ def store_user_data():
 
 
 @app.route('/get_user_activity_data/<id>')
-@jwt_required
+# @jwt_required
 def get_user_activity_data(id):
     activities = db.user_activities.find({'user_id':ObjectId(id)})
     response = dumps(activities)
@@ -146,7 +146,7 @@ def get_user_activity_data(id):
 
 
 @app.route('/store_user_activity_data/<id>', methods=['POST'])
-@jwt_required
+# @jwt_required
 def store_user_activity_data(id):
     data = request.json
 
