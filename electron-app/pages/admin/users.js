@@ -10,7 +10,7 @@ ipcRenderer.on('userData', function(event, args) {
     args.forEach(element => {
         if(element.type === 1) {
             html_str += `
-            <div class="card-deck grid-mess ml-2 mr-2" style="padding: auto;">
+            <div class="col-md-4">
             <div class="card-mess ml-1 mr-1">
                 <div class="card-header">
                     <h4 style="text-align: center;" class="card-title">${element.username}</h4>
@@ -38,4 +38,4 @@ function openUser(id) {
     ipcRenderer.send('getUserInfo', id);
 }
 
-
+{/* <div class="card-deck grid-mess ml-2 mr-2" style="padding: auto;"> */}

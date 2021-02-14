@@ -4,6 +4,7 @@ var fs = require('fs');
 const axios = require('axios');
 const settings = require('electron-settings');
 const { setegid } = require('process');
+var fs = require('fs');
 
 const { app, BrowserWindow, Menu, ipcMain } = electron;
 
@@ -88,7 +89,6 @@ ipcMain.on('activitySubmission', async (event, data) => {
 ipcMain.on('getAllUsers', async (event, data) => {
   console.log(data);
   axios.get('http://127.0.0.1:8080/get_all_users_data').then(response => {
-<<<<<<< HEAD
           event.sender.send('userData', response.data);
           // console.log(response);
       })
@@ -97,12 +97,9 @@ ipcMain.on('getAllUsers', async (event, data) => {
 ipcMain.on('getUserInfo', (event, data) => {
   axios.get(`http://127.0.0.1:8080/get_user_activity_data/${data}`).then((response) => {
     event.sender.send('returning_activity', response.data);
+    // fs.writeFile('./assets/report.json', response.data, 'utf8');
     win.loadFile('./pages/admin/user_report.html');
     console.log(response.data);
-=======
-    event.sender.send('userData', response.data);
-    console.log(response);
->>>>>>> d5b4b442a850cec3c1d654ef9d2c680a62b09c0c
   })
 })
 
