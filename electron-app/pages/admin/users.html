@@ -10,6 +10,7 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./../assets/css/nav.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -52,66 +53,93 @@
         .card-mess:hover{
         background-color: grey;
         }
+        .btn {
+            background-color: DodgerBlue; /* Blue background */
+            border: none; /* Remove borders */
+            color: white; /* White text */
+            padding: 12px 16px; /* Some padding */
+            font-size: 16px; /* Set a font size */
+            cursor: pointer; /* Mouse pointer on hover */
+          }
+          
+          /* Darker background on mouse-over */
+          .btn:hover {
+            background-color: RoyalBlue;
+          }
     </style>
 </head>
 
 <body>
     <h2 class="mb-2 font-weight-bold" style="text-align: center; padding-top: 20px;padding-bottom: 20px;">Employees</h2>
     <div style="margin: auto 0;display: flex;justify-content: center;">
-    <div class="card-deck grid-mess ml-2 mr-2" style="padding: auto;">
-        <div class="card-mess ml-1 mr-1">
-            <div class="card-header">
-                <h4 style="text-align: center;" class="card-title">Mark</h4>
-            </div>
-            <div class="card-body" style="padding-top: 0px;">
-    
-                <p style="text-align: right;"><small>Date: 14/02/2021</small></p>
-                <p style="color: black; text-align: center;">Job Description : Data Analyst</p>
-            </div>
-            <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px
-                    src="../../assets/images/mark.jpg" alt="food"></div>
-            <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">        
-            <button type="submit" class="btn btn-primary">View report</button>
-            </div>
-        </div>
-    </div>
-    <div class="card-deck grid-mess ml-2 mr-2">
-        <div class="card-mess ml-1 mr-1">
-            <div class="card-header">
-                <h4 style="text-align: center;" class="card-title">Mark</h4>
-            </div>
-            <div class="card-body" style="padding-top: 0px;">
-    
-                <p style="text-align: right;"><small>Date: 14/02/2021</small></p>
-                <p style="color: black; text-align: center;">Job Description : Data Analyst</p>
-            </div>
-            <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px src="../../assets/images/mark.jpg"
-                    alt="food"></div>
-
-            <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">
+        <div class="card-deck grid-mess ml-2 mr-2" style="padding: auto;">
+            <div class="card-mess ml-1 mr-1">
+                <div class="card-header">
+                    <h4 style="text-align: center;" class="card-title">Mark</h4>
+                </div>
+                <div class="card-body" style="padding-top: 0px;">
+        
+                    <p style="text-align: right;"><small>Date: 14/02/2021</small></p>
+                    <p style="color: black; text-align: center;">Job Description : Data Analyst</p>
+                </div>
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px
+                        src="../../assets/images/mark.jpg" alt="food"></div>
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;"> 
+                <a href="user_report.html">       
                 <button type="submit" class="btn btn-primary">View report</button>
+                </a>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="card-deck grid-mess ml-2 mr-2">
-        <div class="card-mess ml-1 mr-1">
-            <div class="card-header">
-                <h4 style="text-align: center;" class="card-title">Mark</h4>
-            </div>
-            <div class="card-body" style="padding-top: 0px;">
-    
-                <p style="text-align: right;"><small>Date: 14/02/2021</small></p>
-                <p style="color: black; text-align: center;">Job Description : Data Analyst</p>
-            </div>
-            <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px src="../../assets/images/mark.jpg"
-                    alt="food"></div>
+        <div class="card-deck grid-mess ml-2 mr-2">
+            <div class="card-mess ml-1 mr-1">
+                <div class="card-header">
+                    <h4 style="text-align: center;" class="card-title">Kyle</h4>
+                </div>
+                <div class="card-body" style="padding-top: 0px;">
+        
+                    <p style="text-align: right;"><small>Date: 14/02/2021</small></p>
+                    <p style="color: black; text-align: center;">Job Description : Web Designer</p>
+                </div>
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px src="../../assets/images/kyle.jpg"
+                        alt="food"></div>
 
-            <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">
-                <button type="submit" class="btn btn-primary">View report</button>
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">
+                    <a href="user_report.html">       
+                        <button type="submit" class="btn btn-primary">View report</button>
+                    </a>
+                </div>
             </div>
         </div>
+        <div class="card-deck grid-mess ml-2 mr-2">
+            <div class="card-mess ml-1 mr-1">
+                <div class="card-header">
+                    <h4 style="text-align: center;" class="card-title">Jenny</h4>
+                </div>
+                <div class="card-body" style="padding-top: 0px;">
+        
+                    <p style="text-align: right;"><small>Date: 14/02/2021</small></p>
+                    <p style="color: black; text-align: center;">Job Description : Software Developer</p>
+                </div>
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;" class="col-md-5"><img width=125px height=125px src="../../assets/images/jenny.jpg"
+                        alt="food"></div>
+
+                <div style="margin: 0 auto;display:flex; justify-content: center;padding-bottom: 20px;">
+                    <a href="user_report.html">       
+                        <button type="submit" class="btn btn-primary">View report</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
     </div>
-</div>
+    <div style="text-align: center; padding-top: 20px;padding-bottom: 20px;">
+        <a href="add_user.html">
+        <button class="btn"><i class="fa fa-plus"></i>
+                Add employee
+        </button>
+        </a> 
+    </div>
 
     <!-- <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
