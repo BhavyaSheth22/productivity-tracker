@@ -88,14 +88,15 @@
             <form method="POST" action="" class="form-signin">
                 <fieldset class="form-group">
                     <img class="mt-4" src="https://cdn.logo.com/hotlink-ok/logo-social.png" alt="" width="172" height="172">
-                    <h3 class="h3 mb-3 font-weight-bold">Admin Login</h3>
+                    <h3 class="h3 mb-3 font-weight-bold" id = "test2">Admin Login</h3>
+                    <div class="form-group">
                     <label for="exampleInputUsername">Username</label>
-                    <input type="text" class="form-control" id="UsernameE" aria-describedby="emailHelp" placeholder="Enter username">
+                    <input type="text" class="form-control" id="usernameA" aria-describedby="emailHelp" placeholder="Enter username">
                     <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
                     </div>
                     <div class="form-group">
                       <label for="exampleInputPassword1">Password</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
+                      <input type="password" class="form-control" id="passwordA" placeholder="Enter password">
                     </div>
                     <div class="form-group form-check">
                       <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -103,12 +104,13 @@
                     </div>
                 </fieldset>
                 <div class="form-group">
-                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="submit" class="btn btn-primary" onclick="getFormAData(event)">Submit</button>
                 </div>
             </form>
             </div>
         </div>
       </div>
       </section>
+      <script src="./admin.js"></script>
 </body>
 </html>

@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+electron-app/node_modules/
+electron-app/tracker_script/env
+electron-app/tracker_script/activity.pyc
+electron-app/tracker_script/linux.pyc
+electron-app/tracker_script/activities.json
