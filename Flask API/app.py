@@ -46,7 +46,7 @@ def signup():
     address = data['address']
     # lat = 
     # long = 
-    contact_no = data['contact']
+    contact_no = data['contact_no']
     pwd = data['password']
     password = generate_password_hash(pwd) 
 
