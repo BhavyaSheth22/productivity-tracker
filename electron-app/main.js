@@ -22,7 +22,7 @@ app.on('ready', function () {
   })
   // win.webContents.openDevTools()
   //win.loadFile('./pages/login.html');
-  win.loadFile('./pages/admin/users.html');
+  win.loadFile('./pages/login.html');
 
   python = require('child_process').spawn('python', ['./tracker_script/autotimer.py']);
   python.stdout.on('data', function (data) {
@@ -95,7 +95,9 @@ ipcMain.on('getAllUsers', async (event, data) => {
 
 ipcMain.on('getUserInfo', (event, data) => {
   axios.get(`http://127.0.0.1:8080/get_user_activity_data/${data}`).then((response) => {
-    console.log(response);
+    event.sender.send('returning_activity', response.data);
+    win.loadFile('./pages/admin/user_report.html');
+    console.log(response.data);
   })
 })
 

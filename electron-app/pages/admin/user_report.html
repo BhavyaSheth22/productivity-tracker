@@ -27,9 +27,44 @@
 
         var json_data;
 
+        // $(function () {
+
+        //     let ipcRenderer = require('electron').ipcRenderer; 
+        //     const $ = require('jquery');
+
+        //     ipcRenderer.on('returning_activity', function(event, args) {
+        //         json_data = args;
+        //         console.log(json_data);
+        //     });
+
+        //     $.each(json_data, function (i, f) {
+        //         if (f.Productivity == 'Productive') {
+        //             prod++;
+        //         }
+        //         else if (f.Productivity == 'Non - Productive') {
+        //             unprod++;
+        //         }
+        //         else if(f.Productivity == 'Cant predict'){
+        //             cantprod++;
+        //         }
+        //         var tblRow = "<tr>" + "<td>" + f.Name + "</td>" +
+        //             "<td>" + f.Time.toPrecision(2) + "</td>" + "<td>" + f.Productivity + "</td>" + "</tr>"
+        //         $(tblRow).appendTo("#userdata tbody");
+        //     });
+
+        //     // var people = [];
+
+        //     // $.getJSON('../../assets/test.json', function (data) {
+        //     //     console.log(data)
+        //     //     json_data = data
+                
+
+        //     // });
+
+        // });
+
+
         $(function () {
-
-
             var people = [];
 
             $.getJSON('../../assets/test.json', function (data) {
@@ -82,7 +117,7 @@
 
                 console.log(data1)
 
-                json_data.forEach(d => {
+                json_data.foreach(d => {
                     data1.push([d.Name, d.Time]);
                 });
 
@@ -127,7 +162,7 @@
                 
             }
 
-            console.log(para);
+            // console.log(para);
         });
     </script>
 
