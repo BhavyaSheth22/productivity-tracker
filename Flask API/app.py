@@ -267,7 +267,7 @@ def store_user_data():
 # @jwt_required
 def get_user_activity_data(id):
     activities = db.user_activities.find_one({'user_id': ObjectId(id)})
-    response = dumps(activities)
+    response = activities
     final_response = Ananlyzer(response)
     return final_response
 
