@@ -30,11 +30,11 @@ application windows, browser URLs and determines the productive applications v/s
 
 ## Steps to Run
 1. Clone this repository using git clone
-2. cd Flask API
-3. pip install requirements.txt
-4. python app.py (Here, the server starts)
+2. cd productivity-tracker
+3. cd Flask API
+4. pip install requirements.txt
+5. python app.py (Here, the server starts)
 <br>Now, open another terminal and perform the following steps:
-5. cd productivity-tracker
 6. cd electron-app
 7. npm install
 8. npm start
