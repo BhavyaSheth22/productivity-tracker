@@ -20,7 +20,7 @@ within whitelisted zones
 - It tracks the time spent across all processes, browser tabs,
 application windows, browser URLs and determines the productive applications v/s non-productive applications.
 
-- The productivity tracker showcasea productive hours for each day and splits further into application-wise productivity.
+- The productivity tracker showcases productive hours for each day and splits further into application-wise productivity.
 
 ## Technology stack
 1. Backend API - Flask(Python)
