@@ -1,4 +1,4 @@
-# Timely - A Work from Home Assistant and Productivity Tracker App
+# <center>Timely - A Work from Home Assistant and Productivity Tracker App</center>
 
 ## Team name: ***HackOverflow***
 
