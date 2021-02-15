@@ -89,9 +89,9 @@ ipcMain.on('activitySubmission', async (event, data) => {
 ipcMain.on('getAllUsers', async (event, data) => {
   console.log(data);
   axios.get('http://127.0.0.1:8080/get_all_users_data').then(response => {
-          event.sender.send('userData', response.data);
-          // console.log(response);
-      })
+    event.sender.send('userData', response.data);
+    // console.log(response);
+  })
 });
 
 ipcMain.on('getUserInfo', (event, data) => {
